@@ -66,6 +66,12 @@
         <router-link to="/chapter3/LensFlares">镜头光晕</router-link>
       </a-menu-item>
     </a-sub-menu>
+    <a-sub-menu key="chapter4">
+      <template #title>第四章</template>
+      <a-menu-item key="MeshBasicMaterial">
+        <router-link to="/chapter4/MeshBasicMaterial">基础网格材质</router-link>
+      </a-menu-item>
+    </a-sub-menu>
   </a-menu>
   <router-view/>
 </template>
