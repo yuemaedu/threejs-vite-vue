@@ -38,6 +38,7 @@ const controlRef = ref({
   ambientColor: "#0c0c0c",
   pointColor: "#ccffcc",
   directionalColor: "#ccffcc",
+  skyColor : 0x0000ff,
   distance: 100,
   intensity: 1,
   target: 'plane',
@@ -49,6 +50,7 @@ function initGUI() {
   if (document.querySelectorAll(".dg.ac>.dg.main.a").length === 0) {
     const gui = new dat.GUI()
     gui.addColor(controlRef.value, "ambientColor")
+    gui.addColor(controlRef.value, "skyColor")
     gui.add(controlRef.value, "distance", 0, 100)
     gui.add(controlRef.value, "intensity", 0, 3)
     gui.add(controlRef.value, "debug")
@@ -110,6 +112,13 @@ onMounted(() => {
   watch(() => controlRef.value.directionalColor, (c) => {
     hemisphereLight.color = new Color(c)
   })
+  watch(()=>controlRef.value.intensity,(v)=>{
+    hemisphereLight.intensity=v
+  })
+
+  watch(()=>controlRef.value.skyColor,(v)=>{
+    hemisphereLight.color=new Color(v)
+  })
 
   const cubeGeometry = new BoxGeometry(4, 4, 4)
   const cubeMaterial = new MeshLambertMaterial({color: 0xff0000})
@@ -162,6 +171,7 @@ onMounted(() => {
       scene.remove(cameraHelper)
     }
   })
+
   watch(() => controlRef.value.directionalColor, (c) => {
     directionalLight.color = new Color(c)
   })
