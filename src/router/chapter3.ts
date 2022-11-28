@@ -4,6 +4,7 @@ import PointLight from '../lessons/chapter3/PointLight.vue'
 import SpotLight from '../lessons/chapter3/SpotLight.vue'
 import DirectionalLight from '../lessons/chapter3/DirectionalLight.vue'
 import HemisphereLighting from '../lessons/chapter3/HemisphereLighting.vue'
+import LensFlares from '../lessons/chapter3/LensFlares.vue'
 
 const chapter3: RouteRecordRaw[] = [
     {
@@ -39,6 +40,13 @@ const chapter3: RouteRecordRaw[] = [
         component: HemisphereLighting,
         meta: {
             title: '半球光'
+        }
+    },
+    {
+        path: '/chapter3/LensFlares',
+        component: LensFlares,
+        meta: {
+            title: '镜头光晕'
         }
     },
 ]

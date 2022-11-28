@@ -62,6 +62,9 @@
       <a-menu-item key="hemisphere-light">
         <router-link to="/chapter3/hemisphere-light">半球光</router-link>
       </a-menu-item>
+      <a-menu-item key="LensFlares">
+        <router-link to="/chapter3/LensFlares">镜头光晕</router-link>
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
   <router-view/>
