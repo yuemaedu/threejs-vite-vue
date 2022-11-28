@@ -19,10 +19,12 @@ import * as dat from 'dat.gui';
 const scene = new Scene()
 const containerRef = ref<HTMLDivElement>()
 const rendererRef = ref<WebGLRenderer>()
-const cameraRef = ref<Camera>()
+const cameraRef = ref<PerspectiveCamera>()
 const controlRef = ref({
   rotationSpeed: 0.01,
   numberOfObjects: 0,
+  cameraNear: 0,
+  cameraFar: 50,
   addCube: function () {
     const cubeSize = Math.ceil(3 + (Math.random() * 3));
     const cubeGeometry = new BoxGeometry(cubeSize, cubeSize, cubeSize);
@@ -43,6 +45,8 @@ function initGUI() {
   if (document.querySelectorAll(".dg.ac>.dg.main.a").length === 0) {
     const gui = new dat.GUI()
     gui.add(controlRef.value, "addCube")
+    gui.add(controlRef.value, "cameraNear", 0, 50)
+    gui.add(controlRef.value, "cameraFar", 50, 200)
     gui.add(controlRef.value, "numberOfObjects").listen()
     gui.add(controlRef.value, "rotationSpeed", 0, 0.05).listen()
   }
@@ -76,6 +80,14 @@ function initCamera() {
   cameraRef.value.position.y = 40;
   cameraRef.value.position.z = 50;
   cameraRef.value.lookAt(scene.position);
+  watch(() => controlRef.value.cameraNear, (v) => {
+    cameraRef.value!.near = v
+    cameraRef.value?.updateProjectionMatrix()
+  })
+  watch(() => controlRef.value.cameraFar, (v) => {
+    cameraRef.value!.far = v
+    cameraRef.value?.updateProjectionMatrix()
+  })
 }
 
 
