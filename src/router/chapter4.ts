@@ -2,6 +2,7 @@ import {RouteRecordRaw} from "vue-router";
 import MeshBasicMaterial from '../lessons/chapter4/MeshBasicMaterial.vue'
 import MeshDepthMaterial from '../lessons/chapter4/MeshDepthMaterial.vue'
 import CombinedMaterial from '../lessons/chapter4/CombinedMaterial.vue'
+import MeshNormalMaterial from '../lessons/chapter4/MeshNormalMaterial.vue'
 
 const chapter4: RouteRecordRaw[] = [
     {
@@ -19,10 +20,10 @@ const chapter4: RouteRecordRaw[] = [
         }
     },
     {
-        path: '/chapter4/CombinedMaterial',
-        component: CombinedMaterial,
+        path: '/chapter4/MeshNormalMaterial',
+        component: MeshNormalMaterial,
         meta: {
-            title: '混合材质'
+            title: '网格法向量材质'
         }
     },
 ]

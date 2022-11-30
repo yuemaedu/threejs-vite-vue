@@ -77,6 +77,9 @@
       <a-menu-item key="CombinedMaterial">
         <router-link to="/chapter4/CombinedMaterial">混合材质</router-link>
       </a-menu-item>
+      <a-menu-item key="MeshNormalMaterial">
+        <router-link to="/chapter4/MeshNormalMaterial">网格法向量材质</router-link>
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
   <router-view/>
