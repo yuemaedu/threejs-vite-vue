@@ -74,6 +74,9 @@
       <a-menu-item key="MeshDepthMaterial">
         <router-link to="/chapter4/MeshDepthMaterial">深度网格材质</router-link>
       </a-menu-item>
+      <a-menu-item key="CombinedMaterial">
+        <router-link to="/chapter4/CombinedMaterial">混合材质</router-link>
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
   <router-view/>
