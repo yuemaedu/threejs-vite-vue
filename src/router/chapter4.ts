@@ -3,6 +3,8 @@ import MeshBasicMaterial from '../lessons/chapter4/MeshBasicMaterial.vue'
 import MeshDepthMaterial from '../lessons/chapter4/MeshDepthMaterial.vue'
 import CombinedMaterial from '../lessons/chapter4/CombinedMaterial.vue'
 import MeshNormalMaterial from '../lessons/chapter4/MeshNormalMaterial.vue'
+import MeshFaceMaterial from '../lessons/chapter4/MeshFaceMaterial.vue'
+
 
 const chapter4: RouteRecordRaw[] = [
     {
@@ -31,6 +33,13 @@ const chapter4: RouteRecordRaw[] = [
         component: MeshNormalMaterial,
         meta: {
             title: '网格法向量材质'
+        }
+    },
+    {
+        path: '/chapter4/MeshFaceMaterial',
+        component: MeshFaceMaterial,
+        meta: {
+            title: '网格面'
         }
     },
 ]

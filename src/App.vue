@@ -80,6 +80,9 @@
       <a-menu-item key="MeshNormalMaterial">
         <router-link to="/chapter4/MeshNormalMaterial">网格法向量材质</router-link>
       </a-menu-item>
+      <a-menu-item key="MeshFaceMaterial">
+        <router-link to="/chapter4/MeshFaceMaterial">网格面</router-link>
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
   <router-view/>
