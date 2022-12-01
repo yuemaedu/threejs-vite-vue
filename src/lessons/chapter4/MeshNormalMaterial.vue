@@ -7,16 +7,14 @@ import {
   BackSide,
   BoxGeometry,
   Color, DoubleSide, FrontSide,
-  Mesh, MeshBasicMaterial,
-  MeshDepthMaterial,
-  MeshLambertMaterial, MeshNormalMaterial, MultiplyBlending,
+  Mesh,
+  MeshNormalMaterial,
   PerspectiveCamera,
-  Scene, Side,
+  Scene,
   WebGLRenderer
 } from "three";
 import {onMounted, ref, watch, watchEffect} from "vue";
 import * as dat from "dat.gui";
-import {createMultiMaterialObject} from "three/examples/jsm/utils/SceneUtils";
 
 const containerRef = ref<HTMLDivElement>()
 const rendererRef = ref<WebGLRenderer>()
@@ -28,7 +26,7 @@ const controlRef = ref({
   numberOfObjects: 0,
   cameraNear: 0,
   cameraFar: 50,
-  side: BackSide as Side,
+  side: 'back',
 })
 
 function initGUI() {
@@ -82,15 +80,26 @@ function render() {
   }
 }
 
+const cubeGeometry = new BoxGeometry(15, 15, 15);
+const meshMaterial = new MeshNormalMaterial();
+const cube = new Mesh(cubeGeometry, meshMaterial);
+meshMaterial.side = FrontSide
+scene.add(cube)
+watch(() => controlRef.value.side, (e) => {
+  switch (e) {
+    case 'front' :
+      meshMaterial.side = FrontSide;
+      break
+    case 'back' :
+      meshMaterial.side = BackSide;
+      break
+    case 'double' :
+      meshMaterial.side = DoubleSide;
+      break
+  }
+  meshMaterial.needsUpdate = true;
+})
 onMounted(() => {
-  const cubeGeometry = new BoxGeometry(15, 15, 15);
-  const meshMaterial = new MeshNormalMaterial();
-  const cube = new Mesh(cubeGeometry, meshMaterial);
-  scene.add(cube)
-  watch(() => controlRef.value.side, (e) => {
-    meshMaterial.side = e;
-    meshMaterial.needsUpdate = true;
-  })
   initRenderer()
   initCamera()
   render()
