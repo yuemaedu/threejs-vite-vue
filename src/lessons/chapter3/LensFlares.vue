@@ -199,9 +199,6 @@ onMounted(() => {
     }
   })
 
-  watch(() => controlRef.value.directionalColor, (c) => {
-    directionalflareColor = new Color(c)
-  })
   watch(() => controlRef.value.target, (t) => {
     if (t === 'cube') {
       directionalLight.target = cube
