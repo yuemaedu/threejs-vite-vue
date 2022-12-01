@@ -32,8 +32,8 @@ const controlRef = ref({
 function initGUI() {
   if (document.querySelectorAll(".dg.ac>.dg.main.a").length === 0) {
     const gui = new dat.GUI()
-    gui.add(controlRef.value, 'side', ["front", "back", "double"])
     gui.addColor(controlRef.value, "color")
+    gui.add(controlRef.value, 'side', ["front", "back", "double"])
     gui.add(controlRef.value, "cameraNear", 0, 50)
     gui.add(controlRef.value, "cameraFar", 50, 200)
     gui.add(controlRef.value, "numberOfObjects").listen()
@@ -82,10 +82,10 @@ function render() {
 
 const cubeGeometry = new BoxGeometry(15, 15, 15);
 const meshMaterial = new MeshNormalMaterial();
+meshMaterial.side = BackSide
 const cube = new Mesh(cubeGeometry, meshMaterial);
-meshMaterial.side = FrontSide
 scene.add(cube)
-watch(() => controlRef.value.side, (e) => {
+watch(() => controlRef.value.side, (e, d) => {
   switch (e) {
     case 'front' :
       meshMaterial.side = FrontSide;
@@ -97,7 +97,7 @@ watch(() => controlRef.value.side, (e) => {
       meshMaterial.side = DoubleSide;
       break
   }
-  meshMaterial.needsUpdate = true;
+  meshMaterial.needsUpdate = e !== d;
 })
 onMounted(() => {
   initRenderer()
