@@ -20,6 +20,13 @@ const chapter4: RouteRecordRaw[] = [
         }
     },
     {
+        path: '/chapter4/CombinedMaterial',
+        component: CombinedMaterial,
+        meta: {
+            title: '混合材质'
+        }
+    },
+    {
         path: '/chapter4/MeshNormalMaterial',
         component: MeshNormalMaterial,
         meta: {
