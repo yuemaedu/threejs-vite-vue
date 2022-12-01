@@ -5,6 +5,7 @@ import CombinedMaterial from '../lessons/chapter4/CombinedMaterial.vue'
 import MeshNormalMaterial from '../lessons/chapter4/MeshNormalMaterial.vue'
 import MeshFaceMaterial from '../lessons/chapter4/MeshFaceMaterial.vue'
 import MeshLambertMaterial from '../lessons/chapter4/MeshLambertMaterial.vue'
+import MeshPhongMaterial from '../lessons/chapter4/MeshPhongMaterial.vue'
 
 
 const chapter4: RouteRecordRaw[] = [
@@ -46,6 +47,13 @@ const chapter4: RouteRecordRaw[] = [
     {
         path: '/chapter4/MeshLambertMaterial',
         component: MeshLambertMaterial,
+        meta: {
+            title: 'Lambert （兰伯特）光照模型'
+        }
+    },
+    {
+        path: '/chapter4/MeshPhongMaterial',
+        component: MeshPhongMaterial,
         meta: {
             title: 'Lambert （兰伯特）光照模型'
         }

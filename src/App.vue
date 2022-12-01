@@ -86,6 +86,9 @@
       <a-menu-item key="MeshLambertMaterial">
         <router-link to="/chapter4/MeshLambertMaterial">Lambert （兰伯特）光照模型</router-link>
       </a-menu-item>
+      <a-menu-item key="MeshPhongMaterial">
+        <router-link to="/chapter4/MeshPhongMaterial">Phong光照模型</router-link>
+      </a-menu-item>
     </a-sub-menu>
   </a-menu>
   <router-view/>
