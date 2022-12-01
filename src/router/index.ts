@@ -3,8 +3,16 @@ import chapter2 from "./chapter2";
 import chapter1 from "./chapter1";
 import chapter3 from "./chapter3";
 import chapter4 from "./chapter4";
+import DemoA from "../lessons/demo/DemoA.vue";
 
 const routes: RouteRecordRaw[] = [
+    {
+        path: '/',
+        component: DemoA,
+        meta: {
+            title: '第一个示例'
+        }
+    },
     ...chapter1,
     ...chapter2,
     ...chapter3,
