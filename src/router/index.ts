@@ -38,6 +38,6 @@ const router = createRouter({
     routes
 })
 router.beforeEach((to) => {
-    document.title = to.meta.title as string
+    document.title = 'three+vite+vue3 '+to.meta.title as string
 })
 export default router

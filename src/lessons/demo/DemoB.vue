@@ -1,9 +1,16 @@
 <template>
   <div ref="containerRef" class="container"></div>
+  <div id="plane" :style="{left:infoRef.style.left+'px',top:infoRef.style.top+'px',display:infoRef.style.display}">
+    <p>机柜名称：{{ infoRef.curCabinet.name }}</p>
+    <p>机柜温度：{{ infoRef.curCabinet.temperature }}°</p>
+    <p>
+      使用情况：{{ infoRef.curCabinet.count }}/{{ infoRef.curCabinet.capacity }}
+    </p>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref, watchEffect} from "vue";
+import {onMounted, reactive, ref, watchEffect} from "vue";
 import {
   AmbientLight,
   Color,
@@ -25,6 +32,19 @@ const rendererRef = ref<WebGLRenderer>()
 const cameraRef = ref<PerspectiveCamera>()
 const controlRef = ref<OrbitControls>()
 const scene = new Scene()
+const infoRef = reactive({
+  style: {left: 0, top: 0, display: 'none'},
+  curCabinet: {
+    // 名称
+    name: "Loading……",
+    // 温度
+    temperature: 0,
+    // 容量
+    capacity: 0,
+    // 服务器数量
+    count: 0,
+  },
+})
 
 function initLight() {
   const ambientLight = new AmbientLight('#f0f0f0', .6)
@@ -107,6 +127,24 @@ const raycaster = new Raycaster();
 const pointer = new Vector2();
 const curCabinetRef = ref<Mesh | null>()
 
+function onMouseOverCabinet({name}: { name: string }) {
+  infoRef.style.display = 'block'
+  infoRef.curCabinet.name = name
+  infoRef.curCabinet.temperature = Math.round(Math.random() * 100)
+  const capacity = Math.ceil(200 * Math.random())
+  infoRef.curCabinet.capacity = capacity
+  infoRef.curCabinet.count = capacity - 5
+};
+
+function onMouseOutCabinet() {
+  infoRef.style.display = 'none'
+};
+
+function onMouseMoveCabinet(left: number, top: number) {
+  infoRef.style.left = left
+  infoRef.style.top = top
+};
+
 function selectCabinet(x: number, y: number) {
   const {width, height} = rendererRef.value!.domElement;
   // 鼠标的canvas坐标转裁剪坐标
@@ -127,15 +165,18 @@ function selectCabinet(x: number, y: number) {
   }
 
   if (intersectObj) {
+    onMouseMoveCabinet(x, y);
     if (intersectObj !== curCabinetRef.value) {
       curCabinetRef.value = intersectObj;
       const material = intersectObj.material as MeshBasicMaterial;
       material.setValues({
         map: maps.get("cabinet-hover.jpg"),
       });
+      onMouseOverCabinet(intersectObj)
     }
   } else if (curCabinetRef.value) {
     curCabinetRef.value = null
+    onMouseOutCabinet()
   }
 }
 
@@ -182,5 +223,16 @@ watchEffect(() => {
 .container {
   width: 100vw;
   height: 100vh;
+}
+
+#plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #b1acac;
+  padding: 0 18px;
+  transform: translate(12px, -100%);
+  display: block;
 }
 </style>
