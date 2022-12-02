@@ -4,15 +4,30 @@ import chapter1 from "./chapter1";
 import chapter3 from "./chapter3";
 import chapter4 from "./chapter4";
 import DemoA from "../lessons/demo/DemoA.vue";
+import DemoB from "../lessons/demo/DemoB.vue";
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: DemoA,
-        meta: {
-            title: '第一个示例'
-        }
+        redirect: '/demo/a',
+        children: [
+            {
+                path: '/demo/a',
+                component: DemoA,
+                meta: {
+                    title: '第一个示例'
+                }
+            },
+            {
+                path: '/demo/b',
+                component: DemoB,
+                meta: {
+                    title: '第二个示例'
+                }
+            },
+        ]
     },
+
     ...chapter1,
     ...chapter2,
     ...chapter3,

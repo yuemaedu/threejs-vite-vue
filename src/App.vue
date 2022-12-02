@@ -3,6 +3,16 @@
 
 <template>
   <a-menu mode="horizontal" style="position: fixed">
+
+    <a-sub-menu key="demo">
+      <template #title>项目示例</template>
+      <a-menu-item key="demoA">
+        <router-link to="/demo/a">第一个示例</router-link>
+      </a-menu-item>
+      <a-menu-item key="demoB">
+        <router-link to="/demo/b">第二个示例</router-link>
+      </a-menu-item>
+    </a-sub-menu>
     <a-sub-menu key="chapter1">
       <template #title>第一章</template>
       <a-menu-item key="first-scene">
