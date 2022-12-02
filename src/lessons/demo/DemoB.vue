@@ -168,6 +168,12 @@ watchEffect(() => {
   if (rendererRef.value) {
     containerRef.value?.append(rendererRef.value.domElement)
   }
+  window.addEventListener('resize', () => {
+    cameraRef.value!.aspect = window.innerWidth / window.innerHeight
+    //更新相机投影矩阵
+    cameraRef.value!.updateProjectionMatrix()
+    rendererRef.value!.setSize(window.innerWidth, window.innerHeight)
+  }, false)
 })
 </script>
 
