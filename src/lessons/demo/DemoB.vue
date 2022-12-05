@@ -12,13 +12,9 @@
 <script lang="ts" setup>
 import {onMounted, reactive, ref, watchEffect} from "vue";
 import {
-  AmbientLight,
   Color,
-  DirectionalLight,
-  DirectionalLightHelper,
   Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D,
-  PerspectiveCamera,
-  PointLight, PointLightHelper, Raycaster,
+  PerspectiveCamera,Raycaster,
   Scene, Texture, TextureLoader, Vector2,
   WebGLRenderer
 } from "three";
@@ -45,19 +41,6 @@ const infoRef = reactive({
     count: 0,
   },
 })
-
-function initLight() {
-  const ambientLight = new AmbientLight('#f0f0f0', .6)
-  scene.add(ambientLight)
-  const directionalLight = new DirectionalLight('#ffffff', .2)
-  scene.add(directionalLight)
-  const pointLight = new PointLight('#ffffff', .5, 1800)
-  scene.add(pointLight)
-  pointLight.position.set(0, 400, 0)
-  directionalLight.position.set(10, 40, 10)
-
-}
-
 function initCamera() {
   cameraRef.value = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   const start = {x: 0, y: 0, z: 0}
@@ -200,7 +183,6 @@ onMounted(() => {
     });
     scene.add(...gltf.scene.children);
   });
-  initLight()
   initRenderer()
   initCamera()
   render()

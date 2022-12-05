@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref, watchEffect} from "vue";
+import {onBeforeMount, onMounted, ref, watchEffect} from "vue";
 import {
   AmbientLight, CanvasTexture,
   Color,
@@ -148,13 +148,6 @@ function initLight() {
 }
 
 function render() {
-  scene.traverse((e) => {
-    if (e instanceof Mesh && e.name !== 'plane') {
-      // e.rotation.x += controlRef.value.rotationSpeed;
-      // e.rotation.y += controlRef.value.rotationSpeed;
-      // e.rotation.z += controlRef.value.rotationSpeed;
-    }
-  })
   requestAnimationFrame(render);
   if (cameraRef.value) {
     rendererRef.value?.render(scene, cameraRef.value);
@@ -162,8 +155,7 @@ function render() {
   controlRef.value?.update()
   TWEEN.update()
 }
-
-onMounted(() => {
+onBeforeMount(()=>{
 
   const loader = new GLTFLoader();
   //这个使用来解压缩文件的类
@@ -202,6 +194,8 @@ onMounted(() => {
     }, 1000)
 
   })
+})
+onMounted(() => {
   initLight()
   initRenderer()
   initCamera()
