@@ -12,6 +12,9 @@
       <a-menu-item key="demoB">
         <router-link to="/demo/b">第二个示例</router-link>
       </a-menu-item>
+      <a-menu-item key="demoC">
+        <router-link to="/demo/c">第三个示例</router-link>
+      </a-menu-item>
     </a-sub-menu>
     <a-sub-menu key="chapter1">
       <template #title>第一章</template>
