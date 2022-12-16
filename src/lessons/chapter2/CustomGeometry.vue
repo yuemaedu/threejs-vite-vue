@@ -117,10 +117,10 @@ onMounted(() => {
     cube.position.setX(controlRef.value.positionX)
   })
   watch(() => controlRef.value.positionY, () => {
-    cube.position.setX(controlRef.value.positionY)
+    cube.position.setY(controlRef.value.positionY)
   })
   watch(() => controlRef.value.positionZ, () => {
-    cube.position.setX(controlRef.value.positionZ)
+    cube.position.setZ(controlRef.value.positionZ)
   })
   watch(() => controlRef.value.translateX, () => {
     cube.translateX(controlRef.value.translateX)
