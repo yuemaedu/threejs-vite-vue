@@ -6,6 +6,7 @@ import chapter4 from "./chapter4";
 import DemoA from "../lessons/demo/DemoA.vue";
 import DemoB from "../lessons/demo/DemoB.vue";
 import DemoC from "../lessons/demo/DemoC.vue";
+import DemoD from "../lessons/demo/DemoD.vue";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -30,7 +31,14 @@ const routes: RouteRecordRaw[] = [
                 path: '/demo/c',
                 component: DemoC,
                 meta: {
-                    title: '第二个示例'
+                    title: '第三个示例'
+                }
+            },
+            {
+                path: '/demo/d',
+                component: DemoD,
+                meta: {
+                    title: '第四个示例'
                 }
             },
         ]
@@ -46,6 +54,6 @@ const router = createRouter({
     routes
 })
 router.beforeEach((to) => {
-    document.title = 'three+vite+vue3 '+to.meta.title as string
+    document.title = 'three+vite+vue3 ' + to.meta.title as string
 })
 export default router
