@@ -103,6 +103,13 @@
         <router-link to="/chapter4/MeshPhongMaterial">Phong光照模型</router-link>
       </a-menu-item>
     </a-sub-menu>
+    <a-sub-menu key="chapter5">
+      <template #title>第五章</template>
+      <a-menu-item key="1">
+        <router-link to="/chapter5/1">射线</router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
   </a-menu>
   <router-view/>
 </template>

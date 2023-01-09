@@ -3,6 +3,7 @@ import chapter2 from "./chapter2";
 import chapter1 from "./chapter1";
 import chapter3 from "./chapter3";
 import chapter4 from "./chapter4";
+import chapter5 from "./chapter5";
 import DemoA from "../lessons/demo/DemoA.vue";
 import DemoB from "../lessons/demo/DemoB.vue";
 import DemoC from "../lessons/demo/DemoC.vue";
@@ -47,7 +48,8 @@ const routes: RouteRecordRaw[] = [
     ...chapter1,
     ...chapter2,
     ...chapter3,
-    ...chapter4
+    ...chapter4,
+    ...chapter5
 ]
 const router = createRouter({
     history: createWebHistory(),
